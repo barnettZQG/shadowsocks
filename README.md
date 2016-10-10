@@ -4,6 +4,40 @@
 
 * Server
 
+sample-server.json:
+**before release 0.0.3 use**
+
+```
+{
+    "log_file": "./log/shadowsocks-server.log",
+    "log_level": "debug",
+    "log_max_days": 3,
+	"port_password": {
+		"8387": "foobar",
+		"8388": "barfoo"
+	},
+	"method": "aes-128-cfb",
+	"timeout": 600
+}
+```
+
+ **after release 0.0.3 support network flowcontrol**
+
+```
+{
+    "log_file": "./log/shadowsocks-server.log",
+    "log_level": "debug",
+    "log_max_days": 3,
+	"port_password": {
+		"8387":{"password":"foobar", "ratelimit":"100k"},
+		"8388":{"password":"barfoo", "ratelimit":"0"},
+		"8389":{"password":"test"}
+	},
+	"method": "aes-128-cfb",
+	"timeout": 600
+}
+```
+
 ```
 ./shadowsocks-server --config sample-server.json
 ```
@@ -23,7 +57,6 @@ You can use the client binary file as follow:
 edit `sample-client.json` change `127.0.0.1` to specific server IP:
 
 ```
-# before release 0.0.3
 {
     "log_file": "./log/shadowsocks-client.log",
     "log_level": "debug",
@@ -33,20 +66,6 @@ edit `sample-client.json` change `127.0.0.1` to specific server IP:
 		["127.0.0.1:8387", "foobar"],
 		["127.0.0.1:8388", "barfoo", "aes-128-cfb"]
 	]
-}
-
-# after release 0.0.3 support network flowcontrol
-{
-    "log_file": "./log/shadowsocks-server.log",
-    "log_level": "debug",
-    "log_max_days": 3,
-	"port_password": {
-		"8387":{"password":"foobar", "ratelimit":"100k"},
-		"8388":{"password":"barfoo", "ratelimit":"0"},
-		"8389":{"password":"test"}
-	},
-	"method": "aes-128-cfb",
-	"timeout": 600
 }
 ```
 
