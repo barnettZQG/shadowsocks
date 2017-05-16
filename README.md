@@ -5,23 +5,8 @@
 * Server
 
 sample-server.json:
-**before release 0.0.3 use**
 
-```
-{
-    "log_file": "./log/shadowsocks-server.log",
-    "log_level": "debug",
-    "log_max_days": 3,
-	"port_password": {
-		"8387": "foobar",
-		"8388": "barfoo"
-	},
-	"method": "aes-128-cfb",
-	"timeout": 600
-}
-```
-
- **after release 0.0.3 support network flowcontrol**
+ ** release 0.0.4 support network flowcontrol**
 
 ```
 {
