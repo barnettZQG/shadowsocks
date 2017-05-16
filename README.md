@@ -45,7 +45,7 @@ sample-server.json:
 **Run with docker**
 
 ```
-docker run -d --restart always --net host -v /root/server.json:/server.json -v /root/test.log:/log/shadowsocks-server.log shenshouer/shadowsocks:0.0.3 --config /server.json
+docker run -d --restart always --net host -v /root/server.json:/server.json -v /root/test.log:/log/shadowsocks-server.log shenshouer/shadowsocks:0.0.4 --config /server.json
 ```
 
 send SIGHUP to shadowsocks-server pid to reload config: `kill -1 [PID of shadowsocks-server]`
